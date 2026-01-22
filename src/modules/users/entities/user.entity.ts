@@ -6,7 +6,8 @@ import { Cart } from "../../cart/entities/cart.entity"; // Đảm bảo import C
 import { Review } from "../../reviews/entities/review.entity";
 import { CouponUsage } from "../../coupons/entities/coupon-usage.entity";
 import { Notification } from "../../notifications/entities/notification.entity"; // Đã thêm
-import { Wishlist } from "../../wishlist/entities/wishlist.entity"; // Đã thêm
+import { Wishlist } from "../../wishlist/entities/wishlist.entity";
+import {Exclude} from "class-transformer"; // Đã thêm
 
 export enum UserRole {
     ADMIN = 'admin',
@@ -23,6 +24,7 @@ export class User extends AbstractEntity {
     email: string;
 
     @Column({ select: false })
+    @Exclude()
     password: string;
 
     @Column({ default: '' })
@@ -43,7 +45,7 @@ export class User extends AbstractEntity {
     @Column({ default: true })
     isActive: boolean;
 
-    // === RELATIONSHIPS ===
+
 
     @OneToMany(() => Order, (order) => order.user)
     orders: Order[]; // Đổi tên thành số nhiều

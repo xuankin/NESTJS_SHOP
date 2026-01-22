@@ -14,7 +14,7 @@ export class Review extends AbstractEntity {
     @Column({ default: false })
     isPurchased: boolean;
 
-    @ManyToOne(() => User, (user) => user.review)
+    @ManyToOne(() => User, (user) => user.reviews)
     @JoinColumn({ name: 'user_id' })
     user: User;
 

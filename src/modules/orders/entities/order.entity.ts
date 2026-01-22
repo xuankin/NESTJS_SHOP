@@ -39,7 +39,7 @@ export class Order extends AbstractEntity {
     @Column({ nullable: true })
     note: string;
 
-    @ManyToOne(() => User, (user) => user.order)
+    @ManyToOne(() => User, (user) => user.orders)
     @JoinColumn({ name: 'user_id' })
     user: User;
 

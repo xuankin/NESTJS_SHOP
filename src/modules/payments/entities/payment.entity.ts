@@ -1,25 +1,17 @@
-import {Column, Entity, JoinColumn, ManyToOne, OneToOne} from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne } from "typeorm";
 import { AbstractEntity } from "../../../common/entities/abstract.entity";
-import {Order} from "../../orders/entities/order.entity";
+import { Order } from "../../orders/entities/order.entity";
 
-
-@Entity('order_items')
+@Entity('payments') // Tên bảng
 export class Payment extends AbstractEntity {
     @Column()
-    productName: string;
+    paymentMethod: string; // COD, PAYPAL...
 
-    @Column({ nullable: true })
-    productImage: string;
+    @Column('decimal', { precision: 12, scale: 2, default: 0 })
+    amount: number;
 
-    @Column({ type: 'int' })
-    quantity: number;
-
-    @Column('decimal', { precision: 12, scale: 2 })
-    price: number;
-
-    // QUAN TRỌNG: Lưu JSONB snapshot của product thay vì Relation FK
-    @Column({ type: 'jsonb', nullable: true })
-    productVariant: any;
+    @Column({ default: 'PENDING' })
+    status: string; // PENDING, COMPLETED, FAILED
 
     @OneToOne(() => Order, (order) => order.payment)
     @JoinColumn({ name: 'order_id' })
