@@ -36,7 +36,7 @@ export class Product extends AbstractEntity {
     @Column('float', { default: 0 })
     ratingAverage: number;
 
-    // Relations
+
     @ManyToOne(() => Category, (category) => category.products)
     @JoinColumn({ name: 'category_id' })
     category: Category;

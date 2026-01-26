@@ -13,7 +13,7 @@ export class ReviewsRepository extends Repository<Review> {
         return this.find({
             where: { product: { id: productId } },
             relations: ['user'],
-            order: { CreatedAt: 'DESC' }
+            order: { createdAt: 'DESC' }
         });
     }
 }

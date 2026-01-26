@@ -296,7 +296,7 @@ export class OrdersService {
     async findAll() {
         return this.ordersRepository.find({
             relations: ['user', 'items'],
-            order: { CreatedAt: 'DESC' }
+            order: { createdAt: 'DESC' }
         });
     }
 

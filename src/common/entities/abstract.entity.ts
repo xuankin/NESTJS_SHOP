@@ -4,9 +4,9 @@ export abstract class AbstractEntity {
         @PrimaryGeneratedColumn('uuid')
         id : string
         @CreateDateColumn()
-        CreatedAt: Date
+        createdAt: Date
         @UpdateDateColumn()
-        UpdatedAt: Date
+        updatedAt: Date
         @DeleteDateColumn()
         deletedAt: Date
 }

@@ -17,12 +17,12 @@ export class MailService {
             await this.mailerService.sendMail({
                 to: user.email,
                 subject: `Xác nhận đơn hàng #${order.id} - Đặt hàng thành công`,
-                template: './order-confirmation', // Tên file template (không cần đuôi .hbs)
+                template: './order-confirmation',
                 context: {
                     // Truyền dữ liệu vào template
                     name: user.fullName || user.username,
                     orderId: order.id,
-                    createdAt: new Date(order.CreatedAt).toLocaleString('vi-VN'),
+                    createdAt: new Date(order.createdAt).toLocaleString('vi-VN'),
                     totalAmount: formatCurrency(order.totalAmount),
                     shippingFee: formatCurrency(order.shippingFee),
                     discountAmount: formatCurrency(order.discountAmount),

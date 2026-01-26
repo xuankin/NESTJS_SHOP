@@ -11,7 +11,7 @@ export class NotificationsRepository extends Repository<Notification> {
     async findByUserId(userId: string, limit = 20): Promise<Notification[]> {
         return this.find({
             where: { user: { id: userId } },
-            order: { CreatedAt: 'DESC' },
+            order: { createdAt: 'DESC' },
             take: limit
         });
     }

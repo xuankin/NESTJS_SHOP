@@ -11,7 +11,7 @@ export class OrdersRepository extends Repository<Order> {
         return this.find({
             where: { user: { id: userId } },
             relations: ['items', 'items.order'],
-            order: { CreatedAt: 'DESC' }
+            order: { createdAt: 'DESC' }
         });
     }
 }
